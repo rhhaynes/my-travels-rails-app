@@ -1,0 +1,28 @@
+<div class="content-container">
+
+  <div class="content-header-container">
+
+    <% if @log.user != current_user %>
+      <h2 class="header-top">
+        <%= link_to(@log.user.username, travels_path(@log.user)) %>
+        <div><%= link_to("Logs for #{@log.destination.name}", travel_path(@log.travel)) %></div>
+      </h2>
+    <% else %>
+      <h2 class="header-top"><%= link_to("Logs for #{@log.destination.name}", travel_path(@log.travel)) %></h2>
+    <% end %>
+
+    <h1 class="left-align"><%= @log.title %></h1>
+    <h3>Created on <%= @log.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%d %b %Y at %l:%M %p ET") %></h3>
+
+  </div>
+
+  <div class="content-body-container">
+    <p><%= @log.content %></p>
+  </div>
+
+  <% if @log.user == current_user %>
+    <%= link_to("Edit travel log", edit_travel_log_path(@log.travel, @log), :class => "form-submit-btn") %>
+    <%= button_to("Delete travel log", travel_log_path(@log.travel, @log), :method => :delete, :class => "form-submit-btn-red", :data => {:confirm => "Are you sure?"}) %>
+  <% end %>
+
+</div>
