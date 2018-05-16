@@ -1,0 +1,4 @@
+<div class="link-secondary-subcontainer">
+  <p><%= link_to("Delete", travel_log_path(log.travel, log), :method => :delete, :data => {:confirm => "Are you sure?"}) %></p>
+  <p><%= link_to("Edit", edit_travel_log_path(log.travel, log)) %></p>
+</div>
