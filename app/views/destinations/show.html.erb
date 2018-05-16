@@ -1,0 +1,13 @@
+<div class="content-container">
+
+  <div class="content-header-container">
+    <h1 class="left-align"><%= @destination.name %></h1>
+  </div>
+
+  <% @destination.travels.order(:start_date => :desc).each do |travel| %>
+    <div class="link-body-container">
+      <%= render :partial => "link_to_travel", :locals => {:travel => travel} %>
+    </div>
+  <% end %>
+
+</div>
