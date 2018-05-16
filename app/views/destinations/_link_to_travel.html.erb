@@ -1,0 +1,17 @@
+<a href="<%= travel_path(travel) %>" class="link-primary-subcontainer">
+
+  <p>
+    <%= travel.start_date.to_time.strftime("%b %e, %Y") %>
+    <% if !!travel.end_date %>
+      &ndash;
+      <%= travel.end_date.to_time.strftime("%b %e, %Y") %>
+    <% end %>
+  </p>
+
+  <p><span class="make-bold"><%= travel.user.username %></span></p>
+
+  <p><%= travel.purpose.blank? ? "No Purpose" : travel.purpose %></p>
+
+  <p><%= "#{travel.logs.size} Travel #{"Log".pluralize(travel.logs.size)}"%></p>
+
+</a>
