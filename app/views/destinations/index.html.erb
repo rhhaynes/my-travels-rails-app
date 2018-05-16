@@ -1,0 +1,37 @@
+<div class="content-container">
+
+  <% if @user.destinations.size < 1 %>
+
+    <div class="content-header-container">
+      <h1>Destinations (0)</h1>
+    </div>
+    <%= link_to("Create a new travel", travels_path(@user), :class => "form-submit-btn") if @user == current_user %>
+
+  <% else %>
+
+    <% @user.uniq_destinations.each.with_index(1) do |destination, i| %>
+
+      <div class="content-header-container">
+
+        <% if (i == 1) && (@user != current_user) %>
+          <h2 class="header-top">
+            <%= @user.username %>
+            <div><%= link_to("View by Date", travels_path(@user)) %></div>
+          </h2>
+        <% end %>
+
+        <h1 class="left-align"><%= destination.name %></h1>
+
+      </div>
+
+      <% destination.travels.where(:user => @user).each do |travel| %>
+        <div class="link-body-container">
+          <%= render :partial => "travels/delete_edit_travel", :locals => {:travel => travel} if @user == current_user  %>
+          <%= render :partial => "travels/link_to_travel", :locals => {:travel => travel} %>
+        </div>
+      <% end %>
+
+    <% end %>
+  <% end %>
+
+</div>
