@@ -1,0 +1,32 @@
+<div class="content-container">
+
+  <div class="content-header-container">
+
+    <% if @travel.user != current_user %>
+      <h2 class="header-top"><%= link_to(@travel.user.username, travels_path(@travel.user)) %></h2>
+    <% end %>
+
+    <h1 class="left-align">Logs for <%= @travel.destination.name %></h1>
+
+    <h3>
+      <%= @travel.start_date.to_time.strftime("%b %e, %Y") %>
+      <% if !!@travel.end_date %>
+        &ndash;
+        <%= @travel.end_date.to_time.strftime("%b %e, %Y") %>
+      <% end %>
+    <h3>
+
+  </div>
+
+  <% @travel.logs.order(:created_at => :desc).each do |log| %>
+    <div class="link-body-container">
+      <%= render :partial => "logs/delete_edit_travel_log", :locals => {:log => log} if @travel.user == current_user %>
+      <%= render :partial => "logs/link_to_travel_log", :locals => {:log => log} %>
+    </div>
+  <% end %>
+
+  <% if @travel.user == current_user %>
+    <%= link_to("Create a new log", new_travel_log_path(@travel), :class => "form-submit-btn") %>
+  <% end %>
+
+</div>
