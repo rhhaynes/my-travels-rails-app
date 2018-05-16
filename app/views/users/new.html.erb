@@ -1,0 +1,26 @@
+<div class="form-container">
+
+  <div class="form-header-container">
+    <h1>Sign up for MyTravels</h1>
+  </div>
+
+  <% if @user.errors.any? %>
+    <%= render :partial => "shared/form_errors", :locals => {:obj => @user} %>
+  <% end %>
+
+  <div class="form-body-container">
+    <%= form_for @user do |f| %>
+      <%= render :partial => "user_sign_up_form", :locals => {:f => f} %>
+      <%= f.submit "Sign up", :class => "form-submit-btn" %>
+    <% end %>
+  </div>
+
+  <div class="form-divider-container">
+    <p>or</p>
+  </div>
+
+  <div class="form-body-container">
+    <%= button_to("Sign up with Github", "/auth/github", :method => :get, :class => "form-github-login-btn") %>
+  </div>
+
+</div>
