@@ -1,0 +1,57 @@
+<div class="<%= @user == current_user ? "float-content-left-container" : "content-container" %>">
+
+  <div class="content-header-container">
+
+    <% if @user != current_user %>
+      <h2 class="header-top">
+        <%= @user.username %>
+        <div><%= link_to("View by Destination", destinations_path(@user)) %></div>
+      </h2>
+    <% end %>
+
+    <h1 class="<%= "left-align" if @user != current_user %>">Future Travels (<%= @user.future_travels.size.to_s %>)</h1>
+
+  </div>
+
+  <% @user.future_travels.each do |travel| %>
+    <div class="link-body-container">
+      <%= render :partial => "delete_edit_travel", :locals => {:travel => travel} if @user == current_user  %>
+      <%= render :partial => "link_to_travel", :locals => {:travel => travel} %>
+    </div>
+  <% end %>
+
+  <div class="content-header-container">
+    <h1 class="<%= "left-align" if @user != current_user %>">Past Travels (<%= @user.past_travels.size.to_s %>)</h1>
+  </div>
+
+  <% @user.past_travels.each do |travel| %>
+    <div class="link-body-container">
+      <%= render :partial => "delete_edit_travel", :locals => {:travel => travel} if @user == current_user %>
+      <%= render :partial => "link_to_travel", :locals => {:travel => travel} %>
+    </div>
+  <% end %>
+
+</div>
+
+<% if @user == current_user %>
+  <div class="float-content-right-container">
+    <div class="form-container">
+
+      <div class="form-header-container">
+        <h1>New Travel</h1>
+      </div>
+
+      <% if @travel.errors.any? %>
+        <%= render :partial => "shared/form_errors", :locals => {:obj => @travel} %>
+      <% end %>
+
+      <div class="form-body-container">
+        <%= form_for(@travel, :url => travels_path(current_user), :method => "post") do |f| %>
+          <%= render :partial => "travel_form", :locals => {:f => f, :destination => @travel.destination} %>
+          <%= f.submit "Create new travel", :class => "form-submit-btn" %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+<% end %>
