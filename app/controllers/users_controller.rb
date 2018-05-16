@@ -36,8 +36,11 @@ class UsersController < ApplicationController
   def update
     redirect_to user_path(current_user) unless params_user_is_current_user?
     if params[:other][:current_password].present? && !!@user.authenticate(params[:other][:current_password])
-      if @user.update(user_params) then redirect_to user_path(current_user)
-      else render :edit and return
+      if @user.update(user_params)
+        redirect_to user_path(current_user)
+      else
+        @user.slug = current_user.slug
+        render :edit and return
       end
     else
       @user.errors.add(:current_password, "is invalid")
