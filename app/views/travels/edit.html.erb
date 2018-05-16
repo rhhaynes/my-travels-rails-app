@@ -1,0 +1,18 @@
+<div class="form-container">
+
+  <div class="form-header-container">
+    <h1>Edit Travel</h1>
+  </div>
+
+  <% if @travel.errors.any? %>
+    <%= render :partial => "shared/form_errors", :locals => {:obj => @travel} %>
+  <% end %>
+
+  <div class="form-body-container">
+    <%= form_for @travel do |f| %>
+      <%= render :partial => "travel_form", :locals => {:f => f, :destination => @travel.destination} %>
+      <%= f.submit "Update", :class => "form-submit-btn" %>
+    <% end %>
+  </div>
+
+</div>
