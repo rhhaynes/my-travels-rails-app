@@ -1,0 +1,39 @@
+<% if logged_in? %>
+
+  <div id="header-container" class="clearfix">
+
+    <div id="header-logo-container">
+      <div class="header-link"><%= link_to("MT", home_path, :class => "logo-font") %></div>
+    </div>
+
+    <div id="header-navbar-container">
+      <div class="header-link"><%= link_to("MyTravels", travels_path(current_user)) %></div>
+      &nbsp; &nbsp; &nbsp;
+      <div class="header-link"><%= link_to("MyDestinations", destinations_path(current_user)) %></div>
+    </div>
+
+    <div id="header-login-logout-container">
+      <div class="header-link"><%= link_to("Account", user_path(current_user)) %></div>
+      &nbsp; &nbsp; &nbsp;
+      <div class="header-link"><%= link_to("Sign out", logout_path, :method => :delete) %></div>
+    </div>
+
+  </div>
+
+<% else %>
+
+  <div id="header-container" class="clearfix">
+
+    <div id="header-logo-container">
+      <div class="header-link"><%= link_to("MT", root_path, :class => "logo-font") %></div>
+    </div>
+
+    <div id="header-login-logout-container">
+      <div class="header-link"><%= link_to("Sign in", login_path) %></div>
+      &nbsp;or&nbsp;
+      <div class="header-link"><%= link_to("Sign up", signup_path) %></div>
+    </div>
+
+  </div>
+
+<% end %>
