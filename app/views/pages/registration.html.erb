@@ -1,0 +1,35 @@
+<div class="float-content-left-container">
+
+  <div id="homepage-title-container">
+    <h1>MyTravels</h1>
+  </div>
+
+  <div id="homepage-quote-container">
+    <h2>Collect Moments Not Things</h2>
+  </div>
+
+  <div id="homepage-description-container">
+    <p>
+      Web application designed for those with stories to tell,<br/>
+      not stuff to show.
+    </p>
+  </div>
+
+</div>
+
+<div class="float-content-right-container">
+  <div class="form-container">
+
+    <div class="form-header-container">
+      <h1>Create an Account</h1>
+    </div>
+
+    <div class="form-body-container">
+      <%= form_for @user do |f| %>
+        <%= render :partial => "users/user_sign_up_form", :locals => {:f => f} %>
+        <%= f.submit "Sign up", :class => "form-submit-btn" %>
+      <% end %>
+    </div>
+
+  </div>
+</div>
