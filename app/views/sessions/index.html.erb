@@ -1,0 +1,41 @@
+<div class="content-container">
+
+  <div class="content-header-container">
+    <h1>Most Popular Travel Destinations</h1>
+  </div>
+
+  <div class="link-body-container">
+    <table class="add-padding-tb">
+      <th>Rank</th>
+      <th class="custom-col">Destination</th>
+      <th>Total Visits</th>
+      <% Destination.most_popular.each.with_index(1) do |destination, i| %>
+        <tr>
+          <td class="td-align-center"><%= i.to_s %></td>
+          <td class="custom-col"><%= link_to(destination.name, destination_path(destination)) %></td>
+          <td class="td-align-center"><%= destination.travels.size.to_s %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <div class="content-header-container">
+    <h1>Most Traveled Users</h1>
+  </div>
+
+  <div class="link-body-container">
+    <table class="add-padding-tb">
+      <th>Rank</th>
+      <th class="custom-col">User</th>
+      <th>Total Travels</th>
+      <% User.most_travels.each.with_index(1) do |user, i| %>
+        <tr>
+          <td class="td-align-center"><%= i.to_s %></td>
+          <td class="custom-col"><%= link_to(user.username, travels_path(user)) %></td>
+          <td class="td-align-center"><%= user.travels.size.to_s %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
+</div>
