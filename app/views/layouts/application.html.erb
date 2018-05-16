@@ -9,6 +9,20 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div id="header">
+      <div class="container">
+        <%= render "layouts/header" %>
+      </div>
+    </div>
+    <div id="content">
+      <div class="container clearfix">
+        <%= yield %>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="container">
+        <%= render "layouts/footer" %>
+      </div>
+    </div>
   </body>
 </html>
