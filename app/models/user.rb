@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :travels
+  has_many :travels, :dependent => :destroy
   has_many :destinations, :through => :travels
   has_many :logs, :through => :travels
 
