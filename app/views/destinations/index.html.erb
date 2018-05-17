@@ -24,7 +24,7 @@
 
       </div>
 
-      <% destination.travels.where(:user => @user).each do |travel| %>
+      <% destination.travels.where(:user => @user).order(:start_date => :desc).each do |travel| %>
         <div class="link-body-container">
           <%= render :partial => "travels/delete_edit_travel", :locals => {:travel => travel} if @user == current_user  %>
           <%= render :partial => "travels/link_to_travel", :locals => {:travel => travel} %>
