@@ -1,17 +1,17 @@
 # my-travels-rails-app
 
-Rails MVC web application with CRUD functionality for making, organizing, and
-documenting travel plans. Based on user experiences, MyTravels provides insight
-into the world's most popular destinations and the features that make them unique.
+Ruby on Rails web application and content management system for making, organizing,
+and documenting travel plans. Based on user experiences, the application provides
+insight into the world's most popular destinations and the features that make them unique.
 
-After creating an account, users have the ability to make new travel plans. For
-existing plans users can submit travel logs detailing their upcoming itineraries
-and past experiences.
+After creating an account, users have the ability to make new travel plans. For existing
+plans users can submit journal entries or notes in the form of travel logs to detail their
+upcoming itineraries or past experiences.
 
-Users can also view the travel plans and logs submitted by other users. For
-convenience the app provides two dynamically generated lists based on user data:
-one showing the most popular destinations and the other ranking the most traveled
-users.
+Users can also view the travel plans and logs submitted by other users. For convenience
+and to aid with future planning, the app provides two dynamically generated tables based
+on user data: one listing the most popular destinations and the other ranking the most
+traveled users.
 
 ## Usage
 
