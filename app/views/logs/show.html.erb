@@ -17,6 +17,9 @@
   </div>
 
   <div class="content-body-container">
+    <%= link_to("Previous", travel_log_path(@log.travel, @prev_log), :class => "travel-logs-prev") %>
+    &nbsp; &nbsp;
+    <%= link_to(  "Next"  , travel_log_path(@log.travel, @next_log), :class => "travel-logs-next") %>
     <p><%= @log.content %></p>
   </div>
 
