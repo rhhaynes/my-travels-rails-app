@@ -6,6 +6,7 @@
 
   <% @destination.travels.order(:start_date => :desc).each do |travel| %>
     <div class="link-body-container">
+      <%= render :partial => "travels/delete_edit_travel", :locals => {:travel => travel, :user => travel.user} %>
       <%= render :partial => "link_to_travel", :locals => {:travel => travel} %>
     </div>
   <% end %>
