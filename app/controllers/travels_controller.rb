@@ -14,7 +14,11 @@ class TravelsController < ApplicationController
   def create
     redirect_to travels_path(current_user) unless params_user_is_current_user?
     @travel = @user.travels.build(travel_params)
-    if travel_dates_valid? && @travel.save then redirect_to travels_path(@user)
+    if travel_dates_valid? && @travel.save
+      respond_to do |format|
+        format.html { redirect_to travels_path(@user) }
+        format.json { render :json => @travel }
+      end
     else render :index and return
     end
   end
@@ -23,6 +27,10 @@ class TravelsController < ApplicationController
   # travel_path(:id)
   def show
     redirect_to travels_path(current_user) unless params_travel_exists?
+    respond_to do |format|
+      format.html
+      format.json { render :json => @travel }
+    end
   end
 
   # /travels/:id/edit

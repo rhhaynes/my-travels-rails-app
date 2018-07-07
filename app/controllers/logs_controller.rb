@@ -21,6 +21,17 @@ class LogsController < ApplicationController
   # travel_log_path(:travel_id, :id)
   def show
     redirect_to travels_path(current_user) unless params_travel_log_exists?
+
+    idx = @log.travel.log_ids.index(@log.id)
+    @prev_log = (idx > 0) ? @log.travel.logs[idx-1] : @log
+    @next_log = (idx < (@log.travel.logs.size-1)) ? @log.travel.logs[idx+1] : @log
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => { :log => @log,
+        :prev_log_path => travel_log_path(@prev_log.travel, @prev_log),
+        :next_log_path => travel_log_path(@next_log.travel, @next_log) } }
+    end
   end
 
   # /travels/:travel_id/logs/:id/edit
