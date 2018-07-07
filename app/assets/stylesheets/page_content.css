@@ -65,6 +65,17 @@ h2.header-top div {
   padding: 20px;
 }
 .content-body-container p {
-  margin: 0;
+  margin: 10px 0 0;
   padding: 0;
+}
+.content-body-container a {
+  margin: 0 0 10px;
+  padding: 0;
+}
+.content-body-container a:link, .content-body-container a:visited {
+  color: rgb(40, 40, 40);
+  text-decoration: underline;
+}
+.content-body-container a:hover, .content-body-container a:active {
+  color: rgb(0, 125, 255);
 }

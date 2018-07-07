@@ -8,6 +8,10 @@
    font-weight: bold;
  }
 
+ span.make-italic {
+   font-style: italic;
+ }
+
 .logo-font {
   font-family: 'Arizonia', cursive;
   margin: 0;
