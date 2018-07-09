@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load', function(){
   $('a.travel-logs-index').on('click',  showTravel  );
   $('form#new_travel'    ).on('submit', createTravel);
   $('a.travel-logs-prev' ).on('click',  showLog     );
