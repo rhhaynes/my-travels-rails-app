@@ -63,14 +63,14 @@ function addToPastTravels(travel, pastDates){
     $header.parents('div.content-header-container')
     .after( travel.toHTML() );
 
-  } else if (trave.startDate < pastDates[pastDates.length-1]){
+  } else if (travel.startDate < pastDates[pastDates.length-1]){
     $( currentTravelElement(pastDates[pastDates.length-1]) )
     .parents('div.link-body-container')
     .after( travel.toHTML() );
 
   } else {
     for (const date of pastDates){
-      if (travel.startDate > date){
+      if (travel.startDate >= date){
         $( currentTravelElement(date) ).parents('div.link-body-container')
         .before( travel.toHTML() );
         break;
@@ -94,7 +94,7 @@ function addToFutureTravels(travel, futureDates){
 
   } else {
     for (const date of futureDates){
-      if (travel.startDate < date){
+      if (travel.startDate <= date){
         $( currentTravelElement(date) ).parents('div.link-body-container')
         .before( travel.toHTML() );
         break;
